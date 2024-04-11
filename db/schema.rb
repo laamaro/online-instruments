@@ -10,7 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_11_001939) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_11_004605) do
+  create_table "answers", force: :cascade do |t|
+    t.integer "question_id", null: false
+    t.string "description"
+    t.integer "position"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "applied_instruments", force: :cascade do |t|
+    t.integer "instrument_id", null: false
+    t.integer "user_id", null: false
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instrument_id"], name: "index_applied_instruments_on_instrument_id"
+    t.index ["user_id"], name: "index_applied_instruments_on_user_id"
+  end
+
+  create_table "evaluated_answers", force: :cascade do |t|
+    t.integer "answer_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_evaluated_answers_on_answer_id"
+    t.index ["user_id"], name: "index_evaluated_answers_on_user_id"
+  end
+
+  create_table "instruments", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.integer "instrument_id", null: false
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instrument_id"], name: "index_questions_on_instrument_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -28,4 +71,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_11_001939) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "questions"
+  add_foreign_key "applied_instruments", "instruments"
+  add_foreign_key "applied_instruments", "users"
+  add_foreign_key "evaluated_answers", "answers"
+  add_foreign_key "evaluated_answers", "users"
+  add_foreign_key "questions", "instruments"
 end
