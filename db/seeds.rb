@@ -1,7 +1,19 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+puts "limpando base de dados..."
+Instrument.destroy_all
+User.destroy_all
+
+puts "criando instrumentos com suas respectivas perguntas e opções de respostas..."
+
+20.times do |i|
+  instrument = Instrument.create!(title: "Instrumento #{i}")
+
+  5.times do |j|
+    question = Question.create!(description: "Questão #{j}", instrument: instrument)
+
+    ['A', 'B', 'C', 'D'].each do |option|
+      Answer.create!(description: option, question: question)
+    end
+  end
+end
+
+puts "#{Instrument.count} instrumentos criados!"
