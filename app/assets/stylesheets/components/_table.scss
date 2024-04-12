@@ -1,0 +1,13 @@
+.instrument-grid-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  justify-content: center;
+  text-align: center;
+  width: 70%;
+}
+
+.instrument-grid-item {
+  border: 1px solid rgb(161, 161, 161);
+  padding: 10px;
+  background-color: #fff;
+}

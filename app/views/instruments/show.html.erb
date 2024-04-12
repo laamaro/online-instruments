@@ -1,0 +1,10 @@
+<div class="instrument-card">
+  <h1><%= @instrument.title %></h1>
+
+  <% @instrument.questions.each do |question| %>
+    <div><%= question.description %></div>
+    <% question.answers.each do |answer| %>
+      <div><%= answer.position %> - <%= answer.description %></div>
+    <% end %>
+  <% end %>
+</div>
