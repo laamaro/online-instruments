@@ -1,0 +1,12 @@
+<div class="container mx-auto">
+  <h1 class="text-4xl text-center">Instrumentos Disponíveis</h1>
+
+  <div class="instrument-grid-wrapper">
+    <% @instruments.each_with_index do |instrument, index| %>
+      <div class="instrument-grid-item"><%= index + 1 %></div>
+      <%= link_to instrument_path(instrument) do%>
+        <div class="instrument-grid-item"><%= instrument.title %></div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
