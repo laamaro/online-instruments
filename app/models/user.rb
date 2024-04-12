@@ -7,4 +7,10 @@ class User < ApplicationRecord
   # Associations
   has_many :applied_instruments, dependent: :destroy
   has_many :evaluated_answers, dependent: :destroy
+
+  # Enums
+  enum role: {
+    psychologist: 0, # usuário psicólogo
+    patient: 1 # paciente avaliado
+  }
 end
