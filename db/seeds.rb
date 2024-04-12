@@ -2,6 +2,7 @@ puts "limpando base de dados..."
 Instrument.destroy_all
 User.destroy_all
 
+# ------- Criação de Instrumentos, Perguntas e Respostas
 puts "criando instrumentos com suas respectivas perguntas e opções de respostas..."
 
 20.times do |i|
@@ -27,3 +28,20 @@ puts "criando instrumentos com suas respectivas perguntas e opções de resposta
 end
 
 puts "#{Instrument.count} instrumentos criados!"
+
+# --------------- Criação de dois psicólogos
+puts "criando dois psicólogos como usuários..."
+
+joao = User.create!(email: 'joao@psicologo.com',
+             password: 123123,
+             first_name: 'João',
+             last_name: 'Silva',
+             role: 0)
+
+maria = User.create!(email: 'maria@psicologa.com',
+              password: 123123,
+              first_name: 'Maria',
+              last_name: 'Santos',
+              role: 0)
+
+puts "#{joao.first_name} e #{maria.first_name} foram criados!"
