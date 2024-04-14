@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_11_004605) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_14_181755) do
   create_table "answers", force: :cascade do |t|
     t.integer "question_id", null: false
     t.string "description"
@@ -36,7 +36,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_11_004605) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "applied_instrument_id"
     t.index ["answer_id"], name: "index_evaluated_answers_on_answer_id"
+    t.index ["applied_instrument_id"], name: "index_evaluated_answers_on_applied_instrument_id"
     t.index ["user_id"], name: "index_evaluated_answers_on_user_id"
   end
 
@@ -75,6 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_11_004605) do
   add_foreign_key "applied_instruments", "instruments"
   add_foreign_key "applied_instruments", "users"
   add_foreign_key "evaluated_answers", "answers"
+  add_foreign_key "evaluated_answers", "applied_instruments"
   add_foreign_key "evaluated_answers", "users"
   add_foreign_key "questions", "instruments"
 end

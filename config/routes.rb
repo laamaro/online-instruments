@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   resources :instruments, only: %i[index show]
   resources :users, only: %i[index show] do
     resources :applied_instruments, only: %i[index new create]
+  end
+
+  resources :applied_instruments, only: :show do
     resources :evaluated_answers, only: %i[new create]
   end
 
-  resources :applied_instruments, only: :show
   resources :evaluated_answers, only: %i[edit update]
 end

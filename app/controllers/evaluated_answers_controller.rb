@@ -13,11 +13,13 @@ class EvaluatedAnswersController < ApplicationController
 
     authorize @evaluated_answer
 
-    if @evaluated_answer.save
+    respond_to do |format|
+      if @evaluated_answer.save
 
-      # redirect_to user_path(@user)
-    else
-      render :new, status: :unprocessable_entity
+        format.html { redirect_to user_path(@user) }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
