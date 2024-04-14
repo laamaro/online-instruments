@@ -6,7 +6,9 @@ class AppliedInstrumentsController < ApplicationController
     @applied_instruments = policy_scope(AppliedInstrument)
   end
 
-  def show; end
+  def show
+    @evaluated_answer = EvaluatedAnswer.new
+  end
 
   def new
     @instruments = policy_scope(Instrument)
@@ -23,7 +25,7 @@ class AppliedInstrumentsController < ApplicationController
     authorize @applied_instrument
 
     if @applied_instrument.save
-      redirect_to user_path(@user)
+      redirect_to profile_path(@user)
     else
       render :new, status: :unprocessable_entity
     end

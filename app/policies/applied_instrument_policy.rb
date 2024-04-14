@@ -14,6 +14,6 @@ class AppliedInstrumentPolicy < ApplicationPolicy
   end
 
   def show?
-    user.psychologist?
+    true
   end
 end

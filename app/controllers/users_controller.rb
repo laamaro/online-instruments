@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     @patients = policy_scope(User).where(role: 1)
   end
 
-  def show
+  def profile
     @patient = User.find(params[:id])
 
     authorize @patient
