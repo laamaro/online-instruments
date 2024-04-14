@@ -4,8 +4,12 @@
       <div class="instrument-grid-item"><%= instrument.title %></div>
     <% end %>
     <div class="instrument-grid-item">
-      <%= form_with url: profile_applied_instruments_path(@profile), method: :post do |f| %>
-        <%= f.hidden_field :instrument_id, value: instrument.id %>
+      <%# <%= form_with url: profile_applied_instruments_path(@profile), method: :post do |f| %>
+        <%# <%= f.hidden_field :instrument_id, value: instrument.id %>
+        <%# <%= f.submit '+' %>
+      <%# <% end %>
+      <%= simple_form_for [@user, @applied_instrument] do |f| %>
+        <%= f.input :instrument_id, input_html: { value: instrument.id }, as: :hidden  %>
         <%= f.submit '+' %>
       <% end %>
     </div>
