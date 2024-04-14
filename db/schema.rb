@@ -11,8 +11,11 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2024_04_14_181755) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "answers", force: :cascade do |t|
-    t.integer "question_id", null: false
+    t.bigint "question_id", null: false
     t.string "description"
     t.integer "position"
     t.integer "score"
@@ -22,8 +25,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_14_181755) do
   end
 
   create_table "applied_instruments", force: :cascade do |t|
-    t.integer "instrument_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "instrument_id", null: false
+    t.bigint "user_id", null: false
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -32,11 +35,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_14_181755) do
   end
 
   create_table "evaluated_answers", force: :cascade do |t|
-    t.integer "answer_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "answer_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "applied_instrument_id"
+    t.bigint "applied_instrument_id"
     t.index ["answer_id"], name: "index_evaluated_answers_on_answer_id"
     t.index ["applied_instrument_id"], name: "index_evaluated_answers_on_applied_instrument_id"
     t.index ["user_id"], name: "index_evaluated_answers_on_user_id"
@@ -49,7 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_14_181755) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.integer "instrument_id", null: false
+    t.bigint "instrument_id", null: false
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
