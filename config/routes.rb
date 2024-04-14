@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/profile/:id', to: 'users#profile', as: 'profile'
 
   resources :applied_instruments, only: :show do
+    post 'finish_instrument', to: 'applied_instruments#finish_instrument'
     resources :evaluated_answers, only: %i[new create]
   end
 

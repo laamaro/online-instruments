@@ -4,7 +4,6 @@
   <% @applied_instrument.instrument.questions.each do |question| %>
     <div><%= question.description %></div>
     <% question.answers.each do |answer| %>
-
       <% if current_user.psychologist? %>
         <div><%= answer.position %> - <%= answer.description %></div>
         <% if answer.evaluated_answers.where(user: @applied_instrument.user).any? %>
@@ -14,11 +13,19 @@
     <% end %>
 
     <% if current_user.patient? %>
-      <%= simple_form_for [@applied_instrument, @evaluated_answer] do |f| %>
-        <%= f.collection_radio_buttons :answer_id, question.answers, :id, :description %>
-        <%= f.submit 'Salvar Resposta' %>
+      <% if current_user.evaluated_answers.select { |a| a.answer.question == question && a.applied_instrument == @applied_instrument }.any? %>
+        <%= current_user.evaluated_answers.select { |a| a.answer.question == question && a.applied_instrument == @applied_instrument }.first.answer.description %>
+      <% else %>
+        <%= simple_form_for [@applied_instrument, @evaluated_answer] do |f| %>
+          <%= f.collection_radio_buttons :answer_id, question.answers, :id, :description %>
+          <%= f.submit 'Salvar Resposta' %>
+        <% end %>
       <% end %>
     <% end %>
+  <% end %>
+
+  <% if current_user.patient?  %>
+    <%= link_to 'Finalizar', applied_instrument_finish_instrument_path(@applied_instrument), data: { turbo_method: :post } %>
   <% end %>
 </div>
 

@@ -16,4 +16,8 @@ class AppliedInstrumentPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def finish_instrument?
+    user.patient?
+  end
 end

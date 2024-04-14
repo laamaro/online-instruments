@@ -20,7 +20,7 @@ class AppliedInstrumentsController < ApplicationController
   def create
     @applied_instrument = AppliedInstrument.new(applied_instrument_params)
     @applied_instrument.user = @user
-    @applied_instrument.status = 'pending'
+    @applied_instrument.pending!
 
     authorize @applied_instrument
 
@@ -29,6 +29,15 @@ class AppliedInstrumentsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def finish_instrument
+    @applied_instrument = AppliedInstrument.find(params[:applied_instrument_id])
+    @applied_instrument.finished!
+
+    authorize @applied_instrument
+
+    redirect_to profile_path(@applied_instrument.user)
   end
 
   # def update
