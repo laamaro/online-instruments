@@ -33,15 +33,28 @@ puts "#{Instrument.count} instrumentos criados!"
 puts "criando dois psicólogos como usuários..."
 
 joao = User.create!(email: 'joao@psicologo.com',
-             password: 123123,
-             first_name: 'João',
-             last_name: 'Silva',
-             role: 0)
+                    password: '123123',
+                    first_name: 'João',
+                    last_name: 'Silva',
+                    role: 0)
 
 maria = User.create!(email: 'maria@psicologa.com',
-              password: 123123,
-              first_name: 'Maria',
-              last_name: 'Santos',
-              role: 0)
+                     password: '123123',
+                     first_name: 'Maria',
+                     last_name: 'Santos',
+                     role: 0)
 
 puts "#{joao.first_name} e #{maria.first_name} foram criados!"
+
+# ------------------ Criando um paciente
+puts "criando um paciente..."
+
+paula = User.create!(email: 'paula@paciente.com',
+                     password: '123123',
+                     first_name: 'Paula',
+                     last_name: 'Mendes',
+                     role: 1,
+                     registration_number: '00000000123',
+                     birth_date: '12/8/1987'.to_date)
+
+puts "#{paula.first_name} foi criada!"
