@@ -15,7 +15,7 @@
 
     <% if current_user.patient? %>
       <%= simple_form_for [@applied_instrument, @evaluated_answer] do |f| %>
-        <%= f.collection_radio_buttons :answer_id, question.answers %>
+        <%= f.collection_radio_buttons :answer_id, question.answers, :id, :description %>
         <%= f.submit 'Salvar Resposta' %>
       <% end %>
     <% end %>
