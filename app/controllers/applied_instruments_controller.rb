@@ -9,20 +9,21 @@ class AppliedInstrumentsController < ApplicationController
   def show; end
 
   def new
+    @instruments = policy_scope(Instrument)
     @applied_instrument = AppliedInstrument.new
 
     authorize @applied_instrument
   end
 
   def create
-    @applied_instrument = AppliedInstrument.new(applied_instrument_params)
-    @applied_instrument.user = @patient
+    @applied_instrument = AppliedInstrument.new(instrument_id: params[:instrument_id])
+    @applied_instrument.user = @profile
     @applied_instrument.status = 'pending'
 
     authorize @applied_instrument
 
     if @applied_instrument.save
-      redirect_to @applied_instrument
+      redirect_to profile_path(@profile.id)
     else
       render :new, status: :unprocessable_entity
     end
@@ -48,9 +49,10 @@ class AppliedInstrumentsController < ApplicationController
 
   private
 
-  def applied_instrument_params
-    params.require(:applied_instrument).permit(:instrument_id)
-  end
+  # def applied_instrument_params
+  #   # raise
+  #   params.require(:applied_instrument).permit(:instrument_id)
+  # end
 
   def set_applied_instrument
     @applied_instrument = AppliedInstrument.find(params[:id])
