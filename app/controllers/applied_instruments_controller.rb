@@ -10,12 +10,16 @@ class AppliedInstrumentsController < ApplicationController
 
   def new
     @applied_instrument = AppliedInstrument.new
+
+    authorize @applied_instrument
   end
 
   def create
     @applied_instrument = AppliedInstrument.new(applied_instrument_params)
     @applied_instrument.user = @patient
     @applied_instrument.status = 'pending'
+
+    authorize @applied_instrument
 
     if @applied_instrument.save
       redirect_to @applied_instrument

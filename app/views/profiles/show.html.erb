@@ -1,6 +1,8 @@
 <div class="patient-first_name">
   <h1><%= @patient.first_name %> <%= @patient.last_name %></h1>
 
-  <p><%= @patient.registration_namber %></p>
-  <p><%= @patient.birth_date %></p>
+  <p><strong>CEP:</strong> <%= @patient.registration_number %></p>
+  <p><strong>Data de Nascimento:</strong> <%= @patient.birth_date %></p>
+
+  <%= link_to "Aplicar Nove Instrumentos em #{@patient.first_name}", new_applied_instrument_path %>
 </div>
