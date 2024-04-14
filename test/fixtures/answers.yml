@@ -4,10 +4,10 @@ one:
   question: one
   description: MyString
   position: 1
-  score: 1
+  score: 4
 
 two:
   question: two
   description: MyString
   position: 1
-  score: 1
+  score: 4

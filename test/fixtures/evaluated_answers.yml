@@ -2,8 +2,10 @@
 
 one:
   answer: one
-  user: one
+  user: patient
+  applied_instrument: one
 
 two:
   answer: two
-  user: two
+  user: patient
+  applied_instrument: two

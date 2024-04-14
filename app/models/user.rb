@@ -8,9 +8,19 @@ class User < ApplicationRecord
   has_many :applied_instruments, dependent: :destroy
   has_many :evaluated_answers, dependent: :destroy
 
+  # Validations
+  validates :birth_date, presence: true, if: -> { requires_info? }
+  validates :registration_number, presence: true, if: -> { requires_info? }
+
   # Enums
   enum role: {
     psychologist: 0, # usuário psicólogo
     patient: 1 # paciente avaliado
   }
+
+  private
+
+  def requires_info?
+    patient?
+  end
 end
