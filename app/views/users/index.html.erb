@@ -4,7 +4,7 @@
     <div class="users-grid-wrapper">
       <% @patients.each_with_index do |patient, index| %>
         <div class="patient-grid-item"><%= index + 1 %></div>
-        <%= link_to profile_path(patient) do%>
+        <%= link_to user_path(patient) do%>
           <div class="patient-grid-item"><%= patient.first_name %> <%= patient.last_name %></div>
         <% end %>
       <% end %>
