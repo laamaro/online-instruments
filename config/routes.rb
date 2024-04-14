@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   end
 
   resources :applied_instruments, only: :show
+  resources :evaluated_answers, only: %i[edit update]
 end
