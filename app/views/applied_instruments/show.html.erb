@@ -1,0 +1,13 @@
+<div class="instrument-card">
+  <h1><%= @applied_instrument.instrument.title %></h1>
+
+  <% @applied_instrument.instrument.questions.each do |question| %>
+    <div><%= question.description %></div>
+    <% question.answers.each do |answer| %>
+      <div><%= answer.position %> - <%= answer.description %></div>
+      <% if answer.evaluated_answers.where(user: @applied_instrument.user).any? %>
+        <div>Resposta do Avaliado: <%= answer.evaluated_answers.where(user: @applied_instrument.user).answer.description %></div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
