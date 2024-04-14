@@ -7,7 +7,7 @@
       <% if current_user.psychologist? %>
         <div><%= answer.position %> - <%= answer.description %></div>
         <% if answer.evaluated_answers.where(user: @applied_instrument.user).any? %>
-          <div>Resposta do Avaliado: <%= answer.evaluated_answers.where(user: @applied_instrument.user).answer.description %></div>
+          <div>Resposta do Avaliado: <%= answer.evaluated_answers.where(user: @applied_instrument.user).first.answer.description %></div>
         <% end %>
       <% end %>
     <% end %>
