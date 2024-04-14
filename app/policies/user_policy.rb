@@ -6,7 +6,7 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def show?
-    user.psychologist?
+  def profile?
+    true
   end
 end

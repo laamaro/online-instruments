@@ -6,7 +6,9 @@ class AppliedInstrumentsController < ApplicationController
     @applied_instruments = policy_scope(AppliedInstrument)
   end
 
-  def show; end
+  def show
+    @evaluated_answer = EvaluatedAnswer.new
+  end
 
   def new
     @instruments = policy_scope(Instrument)
@@ -18,15 +20,24 @@ class AppliedInstrumentsController < ApplicationController
   def create
     @applied_instrument = AppliedInstrument.new(applied_instrument_params)
     @applied_instrument.user = @user
-    @applied_instrument.status = 'pending'
+    @applied_instrument.pending!
 
     authorize @applied_instrument
 
     if @applied_instrument.save
-      redirect_to user_path(@user)
+      redirect_to profile_path(@user)
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def finish_instrument
+    @applied_instrument = AppliedInstrument.find(params[:applied_instrument_id])
+    @applied_instrument.finished!
+
+    authorize @applied_instrument
+
+    redirect_to profile_path(@applied_instrument.user)
   end
 
   # def update

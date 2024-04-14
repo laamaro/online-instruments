@@ -2,6 +2,7 @@ class AppliedInstrument < ApplicationRecord
   # Associations
   belongs_to :instrument
   belongs_to :user
+  has_many :evaluated_answers, dependent: :destroy
 
   # Enums
   enum status: {

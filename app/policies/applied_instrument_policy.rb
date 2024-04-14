@@ -14,6 +14,10 @@ class AppliedInstrumentPolicy < ApplicationPolicy
   end
 
   def show?
-    user.psychologist?
+    true
+  end
+
+  def finish_instrument?
+    user.patient?
   end
 end
