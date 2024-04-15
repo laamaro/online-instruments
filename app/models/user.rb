@@ -18,6 +18,13 @@ class User < ApplicationRecord
     patient: 1 # paciente avaliado
   }
 
+  def translated_role
+    case role.to_sym
+    when :psychologist then "Psicólogo"
+    when :patient then "Avaliado"
+    end
+  end
+
   private
 
   def requires_info?
