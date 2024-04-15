@@ -8,4 +8,12 @@ class UsersController < ApplicationController
 
     authorize @patient
   end
+
+  def check_info
+    authorize User
+  end
+
+  def checked
+    raise
+  end
 end

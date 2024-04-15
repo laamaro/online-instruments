@@ -9,4 +9,12 @@ class UserPolicy < ApplicationPolicy
   def profile?
     true
   end
+
+  def check_info?
+    true
+  end
+
+  def checked?
+    true
+  end
 end
