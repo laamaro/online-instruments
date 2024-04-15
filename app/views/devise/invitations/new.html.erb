@@ -1,11 +1,17 @@
-<h2><%= t "devise.invitations.new.header" %></h2>
+<div class="d-flex">
+  <%= link_to root_path do %>
+    <i class="fa-solid fa-arrow-left me-2"></i>
+  <% end %>
+
+  <h2>Cadastrar um Avaliado</h2>
+</div>
 
 <%= simple_form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
 
   <% resource.class.invite_key_fields.each do |field| -%>
     <div class="form-inputs">
-      <%= f.input field %>
+      <%= f.input field, labe: 'E-mail' %>
     </div>
   <% end -%>
 
