@@ -24,7 +24,7 @@
   </div>
 
   <div class="field">
-    <%= f.input :role, label: 'Função', as: :select, collection: User.roles.keys.map { |role| [User.new(role: role).translated_role, role] }, selected: 'patient', disabled: true %>
+    <%= f.input :role, label: 'Função', as: :select, collection: User.roles.keys.map { |role| [User.new(role: role).translated_role, role] } %>
   </div>
 
   <div class="field">
