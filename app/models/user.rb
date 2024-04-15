@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   # Associations
@@ -17,6 +17,13 @@ class User < ApplicationRecord
     psychologist: 0, # usuário psicólogo
     patient: 1 # paciente avaliado
   }
+
+  def translated_role
+    case role.to_sym
+    when :psychologist then "Psicólogo"
+    when :patient then "Avaliado"
+    end
+  end
 
   private
 

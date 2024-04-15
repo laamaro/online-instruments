@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :applied_instruments, only: %i[index new create]
   end
 
+  get 'profile/check_info', to: 'users#check_info', as: 'check_info'
+  post 'profile/checked', to: 'users#checked'
   get '/profile/:id', to: 'users#profile', as: 'profile'
 
   resources :applied_instruments, only: :show do

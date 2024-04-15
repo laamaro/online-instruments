@@ -1,0 +1,26 @@
+<%= form_with url: profile_checked_path, method: :post, data: { turbo: false } do |f| %>
+  <div class="field">
+    <%= f.label :first_name, "Nome" %>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name, "Sobrenome" %>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email, "Email" %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :birth_date, "Data de Nascimento" %>
+    <%= f.date_field :birth_date %>
+  </div>
+  <div class="field">
+    <%= f.label :registration_number, "CEP" %>
+    <%= f.text_field :registration_number %>
+  </div>
+
+  <%= f.submit 'Checar Perfil' %>
+<% end %>
+
+<%= link_to 'Sair Desta Conta', destroy_user_session_path, data: { turbo_method: :delete } %>

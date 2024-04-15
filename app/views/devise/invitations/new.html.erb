@@ -1,0 +1,35 @@
+<h2><%= t "devise.invitations.new.header" %></h2>
+
+<%= simple_form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
+  <%= f.error_notification %>
+
+  <% resource.class.invite_key_fields.each do |field| -%>
+    <div class="form-inputs">
+      <%= f.input field %>
+    </div>
+  <% end -%>
+
+  <div class="field">
+    <%= f.input :first_name, label: 'Nome' %>
+  </div>
+
+  <div class="field">
+    <%= f.input :last_name, label: 'Sobrenome'  %>
+  </div>
+
+  <div class="field">
+    <%= f.input :role, label: 'Função', as: :select, collection: User.roles.keys.map { |role| [User.new(role: role).translated_role, role] }, selected: 'patient', disabled: true %>
+  </div>
+
+  <div class="field">
+    <%= f.input :birth_date, label: 'Data de Nascimento', as: :date, start_year: Date.today.year, end_year: 1917 %>
+  </div>
+
+  <div class="field">
+    <%= f.input :registration_number, label: 'CEP'  %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, t("devise.invitations.new.submit_button") %>
+  </div>
+<% end %>
