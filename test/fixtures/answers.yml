@@ -2,12 +2,36 @@
 
 one:
   question: one
-  description: MyString
+  description: A
   position: 1
-  score: 4
+  score: 3
 
 two:
   question: two
-  description: MyString
+  description: A
   position: 1
-  score: 4
+  score: 3
+
+three:
+  question: one
+  description: B
+  position: 2
+  score: 2
+
+four:
+  question: one
+  description: C
+  position: 3
+  score: 1
+
+five:
+  question: one
+  description: D
+  position: 1
+  score: 3
+
+six:
+  question: two
+  description: B
+  position: 2
+  score: 2
