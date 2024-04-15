@@ -2,10 +2,10 @@
 
 one:
   instrument: one
-  user: one
+  user: patient
   status: 1
 
 two:
   instrument: two
-  user: two
+  user: patient
   status: 1

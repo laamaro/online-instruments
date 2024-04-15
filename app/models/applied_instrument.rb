@@ -4,6 +4,9 @@ class AppliedInstrument < ApplicationRecord
   belongs_to :user
   has_many :evaluated_answers, dependent: :destroy
 
+  # Validations
+  validates :user_id, uniqueness: { scope: :instrument_id }
+
   # Enums
   enum status: {
     pending: 0, # quando o avaliado ainda não respondeu o instrumento
