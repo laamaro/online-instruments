@@ -32,3 +32,26 @@
     color: $mid-purple;
   }
 }
+
+.btn-profile {
+  padding: 10px 30px;
+  background-color: $mid-purple;
+  color: $darker-purple;
+  border-radius: 20px;
+  text-decoration: none;
+  width: 100%;
+
+  i {
+    color: $darker-purple;
+  }
+
+  &:hover {
+    background-color: $purple;
+    color: $light-purple;
+
+    i {
+      color: $purple;
+    }
+  }
+
+}

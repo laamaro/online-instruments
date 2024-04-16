@@ -41,3 +41,39 @@
 a {
   text-decoration: none;
 }
+
+.profile-grid-wrapper {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  justify-content: center;
+  text-align: center;
+  grid-row-gap: 10px;
+  width: 90%;
+}
+
+.profile-grid-item {
+  border: 1px solid $purple;
+  padding: 10px;
+  font-size: 20px;
+
+  i {
+    color: $mid-purple;
+  }
+}
+
+.first-prof {
+  border-radius: 20px 0 0 20px;
+  background-color: $mid-purple;
+  color: $darker-purple;
+
+  &:hover {
+    background-color: $darker-purple;
+    color: $mid-purple;
+  }
+}
+
+.second-prof {
+  border-radius: 0 20px 20px 0;
+  background-color: $darker-purple;
+  color: $mid-purple;
+}
