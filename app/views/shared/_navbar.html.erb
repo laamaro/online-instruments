@@ -7,6 +7,6 @@
 
     <p>Olá, <%= current_user.first_name %></p>
   <% else %>
-    <%= link_to "Entrar", new_user_session_path %>
+    <%= link_to "<i class='fa-solid fa-right-to-bracket'></i>".html_safe, new_user_session_path %>
   <% end %>
 </div>

@@ -16,7 +16,7 @@
 .form-inputs {
   width: 100%;
 
-  input {
+  input:not(.boolean) {
     display: flex;
     flex-direction: column;
     width: 100%;
