@@ -51,7 +51,7 @@
 
     <% else %>
 
-      <div class="home-card-item">
+      <div class="home-card-item patient">
         <%= link_to profile_path(current_user) do %>
           <h3>Ver Meu Perfil</h3>
           <div class="d-flex justify-content-between">
@@ -61,7 +61,7 @@
         <% end %>
       </div>
 
-      <div class="home-card-item">
+      <div class="home-card-item patient">
         <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do%>
           <h3>Trocar de Conta</h3>
           <div class="d-flex justify-content-between">

@@ -43,6 +43,8 @@
   background-color: $darker-purple;
   display: flex;
   flex-direction: column;
+  padding: 10px;
+  border-right: 1px solid $mid-purple;
 
   a {
     text-decoration: none;
@@ -74,5 +76,11 @@
     width: 21%;
     height: 70%;
     margin-right: 100px;
+  }
+}
+
+.patient {
+  img {
+    width: 14%;
   }
 }
