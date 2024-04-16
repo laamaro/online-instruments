@@ -1,0 +1,20 @@
+.btn-home {
+  padding: 10px 30px;
+  background-color: $darker-purple;
+  color: $mid-purple;
+  border-radius: 20px;
+  text-decoration: none;
+
+  i {
+    color: $mid-purple;
+  }
+
+  &:hover {
+    background-color: $mid-purple;
+    color: $darker-purple;
+
+    i {
+      color: $darker-purple;
+    }
+  }
+}

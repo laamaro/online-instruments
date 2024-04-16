@@ -1,10 +1,14 @@
 <div class='home-banner'>
-  <% if user_signed_in? %>
-    <%= link_to 'Ver Instrumentos', instruments_path, class: 'btn-home' %>
-  <% else %>
-    <%= link_to 'Entrar', new_user_session_path, class: 'btn-home' %>
-  <% end %>
-  <%= image_tag 'instrument-home.svg' %>
+  <div class="home-infos">
+    <% if user_signed_in? %>
+      <%= link_to 'Ver Instrumentos <i class="fa-solid fa-arrow-right-long"></i>'.html_safe, instruments_path, class: 'btn-home' %>
+    <% else %>
+      <%= link_to 'Entrar <i class="fa-solid fa-arrow-right-long"></i>'.html_safe, new_user_session_path, class: 'btn-home' %>
+    <% end %>
+  </div>
+  <div class="home-image">
+    <%= image_tag 'instrument-home.svg' %>
+  </div>
 </div>
 
 <div class="home-cards-wrapper">
