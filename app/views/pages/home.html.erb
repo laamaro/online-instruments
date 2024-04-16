@@ -1,4 +1,11 @@
-<h1>BEM-VINDOS!</h1>
+<div class='home-banner'>
+  <% if user_signed_in? %>
+    <%= link_to 'Ver Instrumentos', instruments_path, class: 'btn-home' %>
+  <% else %>
+    <%= link_to 'Entrar', new_user_session_path, class: 'btn-home' %>
+  <% end %>
+  <%= image_tag 'instrument-home.svg' %>
+</div>
 
 <div class="home-cards-wrapper">
   <% if user_signed_in? %>
