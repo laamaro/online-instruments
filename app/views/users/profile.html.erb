@@ -15,7 +15,9 @@
         <p><strong>Data de Nascimento:</strong> <%= @patient.birth_date.strftime("%d/%m/%Y") %></p>
       </div>
 
-      <%= link_to "Aplicar Novo Instrumento em #{@patient.first_name}", new_user_applied_instrument_path(@patient), class: 'btn-profile' %>
+      <% if current_user.psychologist? %>
+        <%= link_to "Aplicar Novo Instrumento em #{@patient.first_name}", new_user_applied_instrument_path(@patient), class: 'btn-profile' %>
+      <% end %>
     </div>
 
     <div class="profile-instruments">

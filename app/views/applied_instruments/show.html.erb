@@ -37,22 +37,28 @@
 
     <% if current_user.patient? %>
       <% @applied_instrument.instrument.questions.each do |question| %>
-        <div><%= question.description %></div>
+        <div class="instrument-card-answers mt-3">
+          <p><%= question.description %>:</p>
           <% if @applied_instrument.evaluated_answers.select { |a| a.answer.question == question }.any? %>
             <%= @applied_instrument.evaluated_answers.select { |a| a.answer.question == question }.first.answer.description %>
           <% else %>
-            <%= simple_form_for [@applied_instrument, @evaluated_answer] do |f| %>
+            <%= simple_form_for [@applied_instrument, @evaluated_answer], html: { class: 'invitation-form' } do |f| %>
               <%= f.collection_radio_buttons :answer_id, question.answers, :id, :description %>
-              <%= f.submit 'Salvar Resposta' %>
+              <%= button_tag type: 'submit', class: "submit-answer" do %>
+                <i class="fa-solid fa-check" aria-hidden="true"></i>
+              <% end %>
             <% end %>
           <% end %>
+        </div>
       <% end %>
 
-      <% if @applied_instrument.pending? %>
-        <%= link_to 'Finalizar', applied_instrument_finish_instrument_path(@applied_instrument), data: { turbo_method: :post } %>
-      <% else %>
-        <p>Finalizado! <i class="fa-solid fa-check"></i></p>
-      <% end %>
+      <div class="instrument-card-result">
+        <% if @applied_instrument.pending? %>
+          <%= link_to 'Finalizar', applied_instrument_finish_instrument_path(@applied_instrument), data: { turbo_method: :post }, class: 'finish-link' %>
+        <% else %>
+          <h4>Finalizado! <i class="fa-solid fa-check"></i></h4>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
