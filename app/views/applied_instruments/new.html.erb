@@ -1,17 +1,24 @@
-<div class="instrument-grid-wrapper">
-  <% @instruments.each_with_index do |instrument, index| %>
-    <%= link_to instrument_path(instrument) do%>
-      <div class="instrument-grid-item"><%= instrument.title %></div>
+<div class="container list">
+  <div class="d-flex">
+    <%= link_to :back, class: 'back-link' do %>
+      <i class="fa-solid fa-arrow-left me-2"></i>
     <% end %>
-    <div class="instrument-grid-item">
-      <%# <%= form_with url: profile_applied_instruments_path(@profile), method: :post do |f| %>
-        <%# <%= f.hidden_field :instrument_id, value: instrument.id %>
-        <%# <%= f.submit '+' %>
-      <%# <% end %>
-      <%= simple_form_for [@user, @applied_instrument] do |f| %>
-        <%= f.input :instrument_id, input_html: { value: instrument.id }, as: :hidden  %>
-        <%= f.submit '+' %>
+    <h1>Escolha o Instrumento</h1>
+  </div>
+
+  <div class="profile-grid-wrapper">
+    <% @instruments.each_with_index do |instrument, index| %>
+      <%= link_to instrument_path(instrument) do%>
+        <div class="profile-grid-item first-prof"><%= instrument.title %></div>
       <% end %>
-    </div>
-  <% end %>
+      <div class="profile-grid-item second-prof">
+        <%= simple_form_for [@user, @applied_instrument], class: 'applied-instruments-form' do |f| %>
+          <%= f.input :instrument_id, input_html: { value: instrument.id }, as: :hidden  %>
+          <%= button_tag type: 'submit', class: "btn-submit" do %>
+              <i class="fa-solid fa-plus" aria-hidden="true"></i>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
