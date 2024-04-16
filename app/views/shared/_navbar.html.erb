@@ -1,0 +1,9 @@
+<div class="navbar">
+  <% if user_signed_in? %>
+    <%= link_to "<i class='fa-solid fa-right-from-bracket'></i>".html_safe, destroy_user_session_path, data: { turbo_method: :delete } %>
+
+    <p>Olá, <%= current_user.first_name %></p>
+  <% else %>
+    <%= link_to "Entrar", new_user_session_path %>
+  <% end %>
+</div>

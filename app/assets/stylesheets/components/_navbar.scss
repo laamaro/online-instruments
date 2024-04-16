@@ -1,0 +1,17 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid $dark-purple;
+  padding: 10px;
+  align-items: center;
+  height: 70px;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  i {
+    color: $dark-purple;
+  }
+}
