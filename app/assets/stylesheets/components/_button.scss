@@ -59,3 +59,15 @@
   background-color: transparent;
   font-size: 16px;
 }
+
+.btn-form {
+  background-color: $purple;
+  color: $darker-purple;
+  padding: 5px;
+  border-radius: 20px;
+
+  &:hover {
+    background-color: $darker-purple;
+    color: $purple;
+  }
+}
