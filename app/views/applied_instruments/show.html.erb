@@ -26,7 +26,11 @@
           <h4>Instrumento Não Finalizado!</h4>
         </div>
 
-        <%= link_to "Visualizar Instrumento", instrument_path(@applied_instrument.instrument), class: 'my-5 btn-home' %>
+        <div class="my-5 d-flex flex-column">
+          <%= link_to "Visualizar Instrumento", instrument_path(@applied_instrument.instrument), class: 'mb-3 btn-home' %>
+          <%= link_to "Perfil do Avaliado", profile_path(@applied_instrument.user), class: 'btn-home' %>
+        </div>
+
       <% end %>
     <% end %>
 
