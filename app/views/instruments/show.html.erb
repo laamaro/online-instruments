@@ -1,15 +1,21 @@
-<div class="instrument-card">
+<div class="container list">
   <div class="d-flex">
-    <%= link_to instruments_path do %>
+    <%= link_to :back, class: 'back-link' do %>
       <i class="fa-solid fa-arrow-left me-2"></i>
     <% end %>
-    <h1><%= @instrument.title %></h1>
+    <h1 class="mb-3"><%= @instrument.title %></h1>
   </div>
 
-  <% @instrument.questions.each do |question| %>
-    <div><%= question.description %></div>
-    <% question.answers.each do |answer| %>
-      <div><%= answer.position %> - <%= answer.description %></div>
+  <div class="instrument-card">
+    <% @instrument.questions.each do |question| %>
+      <div class="instrument-card-title">
+        <h3><%= question.description %></h3>
+      </div>
+      <div class="instrument-card-answers">
+        <% question.answers.each do |answer| %>
+          <div><%= answer.position %> - <%= answer.description %> (<%= answer.score %> pontos)</div>
+        <% end %>
+      </div>
     <% end %>
-  <% end %>
+  </div>
 </div>
