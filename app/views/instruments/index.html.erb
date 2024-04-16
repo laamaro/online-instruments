@@ -6,11 +6,11 @@
     <h1>Instrumentos Disponíveis</h1>
   </div>
 
-  <div class="instrument-grid-wrapper">
+  <div class="table-grid-wrapper">
     <% @instruments.each_with_index do |instrument, index| %>
-      <div class="instrument-grid-item first"><%= index + 1 %></div>
+      <div class="table-grid-item first"><%= index + 1 %></div>
       <%= link_to instrument_path(instrument) do%>
-        <div class="instrument-grid-item second"><%= instrument.title %></div>
+        <div class="table-grid-item second"><%= instrument.title %></div>
       <% end %>
     <% end %>
   </div>

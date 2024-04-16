@@ -6,7 +6,7 @@
   margin-bottom: 3rem;
 }
 
-.instrument-grid-wrapper {
+.table-grid-wrapper {
   display: grid;
   grid-template-columns: 0.5fr 3fr;
   justify-content: center;
@@ -15,7 +15,7 @@
   width: 80%;
 }
 
-.instrument-grid-item {
+.table-grid-item {
   border: 1px solid $purple;
   padding: 10px;
   font-size: 20px;
