@@ -1,12 +1,17 @@
 <div class="container mx-auto">
-  <h1 class="text-4xl text-center">Lista de Pacientes</h1>
+  <div class="d-flex">
+    <%= link_to root_path do %>
+      <i class="fa-solid fa-arrow-left me-2"></i>
+    <% end %>
+    <h1>Lista de Pacientes</h1>
+  </div>
 
-    <div class="users-grid-wrapper">
-      <% @patients.each_with_index do |patient, index| %>
-        <div class="patient-grid-item"><%= index + 1 %></div>
-        <%= link_to user_path(patient) do%>
-          <div class="patient-grid-item"><%= patient.first_name %> <%= patient.last_name %></div>
-        <% end %>
+  <div class="users-grid-wrapper">
+    <% @patients.each_with_index do |patient, index| %>
+      <div class="patient-grid-item"><%= index + 1 %></div>
+      <%= link_to profile_path(patient) do%>
+        <div class="patient-grid-item"><%= patient.first_name %> <%= patient.last_name %></div>
       <% end %>
-    </div>
+    <% end %>
+  </div>
 </div>

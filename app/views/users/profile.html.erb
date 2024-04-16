@@ -1,5 +1,10 @@
 <div class="patient-first_name">
-  <h1><%= @patient.first_name %> <%= @patient.last_name %></h1>
+  <div class="d-flex">
+    <%= link_to users_path do %>
+      <i class="fa-solid fa-arrow-left me-2"></i>
+    <% end %>
+    <h1><%= @patient.first_name %> <%= @patient.last_name %></h1>
+  </div>
 
   <p><strong>CEP:</strong> <%= @patient.registration_number %></p>
   <p><strong>Data de Nascimento:</strong> <%= @patient.birth_date %></p>
@@ -13,8 +18,7 @@
       <%= link_to applied_instrument_path(applied_instrument) do%>
         <div class="instrument-grid-item"><%= applied_instrument.instrument.title %></div>
       <% end %>
-      <div class="instrument-grid-item"><%= applied_instrument.status %></div>
+      <div class="instrument-grid-item"><%= translate_status(applied_instrument.status) %></div>
     <% end %>
   </div>
 </div>
-<%= link_to 'log_out', destroy_user_session_path, data: { turbo_method: :delete } %>

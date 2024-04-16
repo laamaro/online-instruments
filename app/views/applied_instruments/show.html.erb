@@ -1,32 +1,44 @@
 <div class="instrument-card">
-  <h1><%= @applied_instrument.instrument.title %></h1>
-
-  <% @applied_instrument.instrument.questions.each do |question| %>
-    <div><%= question.description %></div>
-    <% question.answers.each do |answer| %>
-      <% if current_user.psychologist? %>
-        <div><%= answer.position %> - <%= answer.description %></div>
-        <% if answer.evaluated_answers.where(user: @applied_instrument.user).any? %>
-          <div>Resposta do Avaliado: <%= answer.evaluated_answers.where(user: @applied_instrument.user).first.answer.description %></div>
-        <% end %>
-      <% end %>
+  <div class="d-flex">
+    <%= link_to profile_path(@applied_instrument.user) do %>
+      <i class="fa-solid fa-arrow-left me-2"></i>
     <% end %>
+    <h1><%= @applied_instrument.instrument.title %></h1>
+  </div>
 
-    <% if current_user.patient? %>
-      <% if current_user.evaluated_answers.select { |a| a.answer.question == question && a.applied_instrument == @applied_instrument }.any? %>
-        <%= current_user.evaluated_answers.select { |a| a.answer.question == question && a.applied_instrument == @applied_instrument }.first.answer.description %>
-      <% else %>
-        <%= simple_form_for [@applied_instrument, @evaluated_answer] do |f| %>
-          <%= f.collection_radio_buttons :answer_id, question.answers, :id, :description %>
-          <%= f.submit 'Salvar Resposta' %>
-        <% end %>
+  <% if current_user.psychologist? %>
+    <% if @applied_instrument.finished? %>
+      <div>Respostas do Avaliado: </div>
+      <% @applied_instrument.evaluated_answers.each do |ev_answer| %>
+        <p><%= ev_answer.answer.question.description %>: <%= ev_answer.answer.description %></p>
       <% end %>
+
+      <p><strong>Resultado Final: <%= @applied_instrument.evaluated_answers.sum { |ev_answer| ev_answer.answer.score }%> pontos</strong></p>
+    <% else %>
+      <p>Instrumento Não Finalizado!</p>
+      <%= link_to "Visualizar Instrumento", instrument_path(@applied_instrument.instrument) %>
     <% end %>
   <% end %>
 
-  <% if current_user.patient?  %>
-    <%= link_to 'Finalizar', applied_instrument_finish_instrument_path(@applied_instrument), data: { turbo_method: :post } %>
+
+  <% if current_user.patient? %>
+    <% @applied_instrument.instrument.questions.each do |question| %>
+      <div><%= question.description %></div>
+        <%# if current_user.evaluated_answers.select { |a| a.answer.question == question && a.applied_instrument == @applied_instrument }.any? %>
+        <% if @applied_instrument.evaluated_answers.select { |a| a.answer.question == question }.any? %>
+          <%= @applied_instrument.evaluated_answers.select { |a| a.answer.question == question }.first.answer.description %>
+        <% else %>
+          <%= simple_form_for [@applied_instrument, @evaluated_answer] do |f| %>
+            <%= f.collection_radio_buttons :answer_id, question.answers, :id, :description %>
+            <%= f.submit 'Salvar Resposta' %>
+          <% end %>
+        <% end %>
+    <% end %>
+
+    <% if @applied_instrument.pending? %>
+      <%= link_to 'Finalizar', applied_instrument_finish_instrument_path(@applied_instrument), data: { turbo_method: :post } %>
+    <% else %>
+      <p>Finalizado! <i class="fa-solid fa-check"></i></p>
+    <% end %>
   <% end %>
 </div>
-
-<%= link_to 'log_out', destroy_user_session_path, data: { turbo_method: :delete } %>

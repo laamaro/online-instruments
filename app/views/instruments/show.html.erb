@@ -1,5 +1,10 @@
 <div class="instrument-card">
-  <h1><%= @instrument.title %></h1>
+  <div class="d-flex">
+    <%= link_to instruments_path do %>
+      <i class="fa-solid fa-arrow-left me-2"></i>
+    <% end %>
+    <h1><%= @instrument.title %></h1>
+  </div>
 
   <% @instrument.questions.each do |question| %>
     <div><%= question.description %></div>

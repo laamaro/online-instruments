@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
       redirect_to profile_path(current_user)
     else
-      render :check_info, notice: 'Entre com o perfil correto!'
+      render :check_info, alert: 'Entre com o perfil correto!'
     end
 
     authorize current_user
