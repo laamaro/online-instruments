@@ -4,19 +4,45 @@
 }
 
 .home-cards-wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 2fr);
+  display: flex;
+  height: 18vh;
 }
 
 .home-card-item {
-  height: 300px;
-  width: 150px;
-  background-color: #fff;
+  width: 100%;
+  background-color: $darker-purple;
   display: flex;
   flex-direction: column;
 
+  a {
+    text-decoration: none;
+  }
+
+  i {
+    font-size: 30px;
+    color: $mid-purple;
+  }
+
   h3 {
     font-size: 30px;
-    color: rgb(0, 0, 42);
+    color: $mid-purple;
+  }
+
+  &:hover {
+    background-color: $mid-purple;
+
+    h3 {
+      color: $darker-purple;
+    }
+
+    i {
+      color: $darker-purple;
+    }
+  }
+
+  img {
+    width: 21%;
+    height: 70%;
+    margin-right: 100px;
   }
 }
