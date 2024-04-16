@@ -1,51 +1,76 @@
-<h1>BEM-VINDOS!</h1>
+<div class='home-banner'>
+  <div class="home-infos">
+    <% if user_signed_in? %>
+      <% if current_user.psychologist? %>
+        <%= link_to 'Ver Instrumentos <i class="fa-solid fa-arrow-right-long"></i>'.html_safe, instruments_path, class: 'btn-home' %>
+      <% else %>
+        <%= link_to 'Ver Perfil <i class="fa-solid fa-arrow-right-long"></i>'.html_safe, profile_path(current_user), class: 'btn-home' %>
+      <% end %>
+    <% else %>
+      <%= link_to 'Entrar <i class="fa-solid fa-arrow-right-long"></i>'.html_safe, new_user_session_path, class: 'btn-home' %>
+    <% end %>
+  </div>
+  <div class="home-image">
+    <%= image_tag 'instrument-home.svg' %>
+  </div>
+</div>
 
 <div class="home-cards-wrapper">
   <% if user_signed_in? %>
     <% if current_user.psychologist? %>
 
       <div class="home-card-item">
-        <h3>Cadastrar Avaliado</h3>
         <%= link_to new_user_invitation_path do %>
-          <i class="fa-solid fa-person-circle-plus"></i>
+          <h3>Cadastrar Avaliado</h3>
+          <div class="d-flex justify-content-between">
+            <i class="fa-solid fa-arrow-right-long"></i>
+            <%= image_tag 'add_user.svg' %>
+          </div>
         <% end %>
       </div>
 
       <div class="home-card-item">
-        <h3>Lista de Instrumentos Cadastrados</h3>
-        <%= link_to "<i class='fa-solid fa-table-list'></i>".html_safe, instruments_path %>
+        <%= link_to instruments_path do %>
+          <h3>Lista de Instrumentos Cadastrados</h3>
+          <div class="d-flex justify-content-between">
+            <i class="fa-solid fa-arrow-right-long"></i>
+            <%= image_tag 'instruments.svg' %>
+          </div>
+        <% end %>
       </div>
 
       <div class="home-card-item">
-        <h3>Lista de Avaliados Cadastrados</h3>
         <%= link_to users_path do %>
-          <i class="fa-solid fa-users"></i>
+          <h3>Lista de Avaliados Cadastrados</h3>
+          <div class="d-flex justify-content-between">
+            <i class="fa-solid fa-arrow-right-long"></i>
+            <%= image_tag 'users.svg' %>
+          </div>
         <% end %>
       </div>
 
     <% else %>
 
-      <div class="home-card-item">
-        <h3>Ver Meu Perfil</h3>
+      <div class="home-card-item patient">
         <%= link_to profile_path(current_user) do %>
-          <i class="fa-solid fa-user"></i>
+          <h3>Ver Meu Perfil</h3>
+          <div class="d-flex justify-content-between">
+            <i class="fa-solid fa-arrow-right-long"></i>
+            <%= image_tag 'profile.svg' %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="home-card-item patient">
+        <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do%>
+          <h3>Trocar de Conta</h3>
+          <div class="d-flex justify-content-between">
+            <i class="fa-solid fa-arrow-right-long"></i>
+            <%= image_tag 'logout.svg' %>
+          </div>
         <% end %>
       </div>
 
     <% end %>
-
-    <div class="home-card-item">
-      <h3>Sair</h3>
-      <%= link_to "<i class='fa-solid fa-right-from-bracket'></i>".html_safe, destroy_user_session_path, data: { turbo_method: :delete } %>
-    </div>
-
-  <% else %>
-
-    <div class="home-card-item">
-      <h3>Entrar</h3>
-      <%= link_to new_user_session_path do %>
-        <i class="fa-solid fa-right-to-bracket"></i>
-      <% end %>
-    </div>
   <% end %>
 </div>

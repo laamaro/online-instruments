@@ -1,24 +1,42 @@
-<div class="patient-first_name">
-  <div class="d-flex">
-    <%= link_to users_path do %>
+<div class="container">
+  <div class="d-flex mb-3">
+    <%= link_to root_path, class: 'back-link' do %>
       <i class="fa-solid fa-arrow-left me-2"></i>
     <% end %>
-    <h1><%= @patient.first_name %> <%= @patient.last_name %></h1>
+    <h1>Perfil de <%= @patient.first_name %></h1>
   </div>
 
-  <p><strong>CEP:</strong> <%= @patient.registration_number %></p>
-  <p><strong>Data de Nascimento:</strong> <%= @patient.birth_date %></p>
+  <div class="profile-wrapper">
+    <div class="profile-info">
+      <div>
+        <p><strong>Nome Completo:</strong> <%= @patient.first_name %> <%= @patient.last_name %></p>
+        <p><strong>E-mail:</strong> <%= @patient.email %></p>
+        <p><strong>CEP:</strong> <%= @patient.registration_number %></p>
+        <p><strong>Data de Nascimento:</strong> <%= @patient.birth_date.strftime("%d/%m/%Y") %></p>
+      </div>
 
-  <%= link_to "Aplicar Novo Instrumento em #{@patient.first_name}", new_user_applied_instrument_path(@patient) %>
-
-  <h3>Instrumentos Aplicados:</h3>
-
-  <div class="instrument-grid-wrapper">
-    <% @patient.applied_instruments.each_with_index do |applied_instrument, index| %>
-      <%= link_to applied_instrument_path(applied_instrument) do%>
-        <div class="instrument-grid-item"><%= applied_instrument.instrument.title %></div>
+      <% if current_user.psychologist? %>
+        <%= link_to "Aplicar Novo Instrumento em #{@patient.first_name}", new_user_applied_instrument_path(@patient), class: 'btn-profile' %>
       <% end %>
-      <div class="instrument-grid-item"><%= translate_status(applied_instrument.status) %></div>
-    <% end %>
+    </div>
+
+    <div class="profile-instruments">
+      <h3>Instrumentos Aplicados:</h3>
+
+      <div class="profile-grid-wrapper">
+        <% @patient.applied_instruments.each_with_index do |applied_instrument, index| %>
+          <%= link_to applied_instrument_path(applied_instrument) do%>
+            <div class="profile-grid-item first-prof"><%= applied_instrument.instrument.title %></div>
+          <% end %>
+          <div class="profile-grid-item second-prof">
+            <%= translate_status(applied_instrument.status) %>
+            <i class="fa-solid fa-check <%= 'd-none' if applied_instrument.pending? %>"></i>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
   </div>
+
+
 </div>

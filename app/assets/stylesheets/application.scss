@@ -1,8 +1,12 @@
-@import "components/index";
 @import "bootstrap";
 @import "font-awesome";
-
+@import "config/colors";
+@import "components/index";
 
 body {
-  background-color: #dfdfdf85;
+  background-color: $light-purple;
+}
+
+h1 {
+  color: $dark-purple;
 }

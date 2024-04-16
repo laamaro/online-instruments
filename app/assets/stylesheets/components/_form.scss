@@ -1,0 +1,55 @@
+.applied-instruments-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 80%;
+}
+
+.form-inputs {
+  width: 100%;
+
+  input:not(.boolean) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 2px solid $purple;
+    border-radius: 20px;
+    padding: 5px;
+  }
+
+  select {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 2px solid $purple;
+    border-radius: 20px;
+    padding: 5px;
+  }
+
+  .date {
+    display: flex;
+    width: 60%;
+    height: 40px;
+    margin-bottom: 2rem;
+  }
+
+  .birth-date {
+    display: flex;
+    width: 40%;
+    height: 60px;
+    margin-bottom: 2rem;
+  }
+
+  label {
+    font-size: 20px;
+    color: $dark-purple;
+  }
+}

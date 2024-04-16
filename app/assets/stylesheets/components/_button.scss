@@ -1,0 +1,99 @@
+.btn-home {
+  padding: 10px 30px;
+  background-color: $darker-purple;
+  color: $mid-purple;
+  border-radius: 20px;
+  text-decoration: none;
+
+  i {
+    color: $mid-purple;
+  }
+
+  &:hover {
+    background-color: $mid-purple;
+    color: $darker-purple;
+
+    i {
+      color: $darker-purple;
+    }
+  }
+}
+
+.back-link {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  font-size: 30px;
+  color: $dark-purple;
+  padding-right: 100px;
+
+  &:hover {
+    color: $mid-purple;
+  }
+}
+
+.btn-profile {
+  padding: 10px 30px;
+  background-color: $mid-purple;
+  color: $darker-purple;
+  border-radius: 20px;
+  text-decoration: none;
+  width: 100%;
+
+  i {
+    color: $darker-purple;
+  }
+
+  &:hover {
+    background-color: $purple;
+    color: $light-purple;
+
+    i {
+      color: $purple;
+    }
+  }
+}
+
+.btn-submit {
+  background-color: transparent;
+  font-size: 16px;
+}
+
+.btn-form {
+  background-color: $purple;
+  color: $darker-purple;
+  padding: 5px;
+  border-radius: 20px;
+
+  &:hover {
+    background-color: $darker-purple;
+    color: $purple;
+  }
+}
+
+.submit-answer {
+  background-color: $dark-purple;
+  border-radius: 50%;
+  padding: 9px 15px;
+  color: $mid-purple;
+  margin-bottom: 1.5rem;
+  border-color: $dark-purple;
+  border: none;
+  box-shadow: 1px 2px 8px #988c96cb;
+
+  &:hover {
+    background-color: $mid-purple;
+    color: $dark-purple;
+  }
+}
+
+.finish-link {
+  font-size: 20px;
+  color: $mid-purple;
+  font-weight: bold;
+
+  &:hover {
+    font-size: 22px;
+  }
+}
