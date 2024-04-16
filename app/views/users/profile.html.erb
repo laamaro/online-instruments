@@ -18,7 +18,7 @@
       <%= link_to applied_instrument_path(applied_instrument) do%>
         <div class="instrument-grid-item"><%= applied_instrument.instrument.title %></div>
       <% end %>
-      <div class="instrument-grid-item"><%= applied_instrument.status %></div>
+      <div class="instrument-grid-item"><%= translate_status(applied_instrument.status) %></div>
     <% end %>
   </div>
 </div>
