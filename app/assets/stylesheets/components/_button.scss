@@ -18,3 +18,17 @@
     }
   }
 }
+
+.back-link {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  font-size: 30px;
+  color: $dark-purple;
+  padding-right: 100px;
+
+  &:hover {
+    color: $mid-purple;
+  }
+}

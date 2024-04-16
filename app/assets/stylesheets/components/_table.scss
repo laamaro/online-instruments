@@ -1,3 +1,11 @@
+.list {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
 .instrument-grid-wrapper {
   display: grid;
   grid-template-columns: 1fr 3fr;
