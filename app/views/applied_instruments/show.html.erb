@@ -13,7 +13,7 @@
         <p><%= ev_answer.answer.question.description %>: <%= ev_answer.answer.description %></p>
       <% end %>
 
-      <p>Resultado Final: <%= @applied_instrument.evaluated_answers.sum { |ev_answer| ev_answer.answer.score }%> pontos </p>
+      <p><strong>Resultado Final: <%= @applied_instrument.evaluated_answers.sum { |ev_answer| ev_answer.answer.score }%> pontos</strong></p>
     <% else %>
       <p>Instrumento Não Finalizado!</p>
       <%= link_to "Visualizar Instrumento", instrument_path(@applied_instrument.instrument) %>
@@ -24,8 +24,9 @@
   <% if current_user.patient? %>
     <% @applied_instrument.instrument.questions.each do |question| %>
       <div><%= question.description %></div>
-        <% if current_user.evaluated_answers.select { |a| a.answer.question == question && a.applied_instrument == @applied_instrument }.any? %>
-          <%= current_user.evaluated_answers.select { |a| a.answer.question == question && a.applied_instrument == @applied_instrument }.first.answer.description %>
+        <%# if current_user.evaluated_answers.select { |a| a.answer.question == question && a.applied_instrument == @applied_instrument }.any? %>
+        <% if @applied_instrument.evaluated_answers.select { |a| a.answer.question == question }.any? %>
+          <%= @applied_instrument.evaluated_answers.select { |a| a.answer.question == question }.first.answer.description %>
         <% else %>
           <%= simple_form_for [@applied_instrument, @evaluated_answer] do |f| %>
             <%= f.collection_radio_buttons :answer_id, question.answers, :id, :description %>
