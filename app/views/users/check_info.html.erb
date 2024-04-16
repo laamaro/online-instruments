@@ -1,27 +1,33 @@
-<h1>Atenção! Você deve estar logado com a conta correta!</h1>
-<%= link_to 'Sair Desta Conta', destroy_user_session_path, data: { turbo_method: :delete } %>
-
-<%= form_with url: profile_checked_path, method: :post, data: { turbo: false } do |f| %>
-  <div class="field">
-    <%= f.label :first_name, "Nome" %>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name, "Sobrenome" %>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :email, "Email" %>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :birth_date, "Data de Nascimento" %>
-    <%= f.date_field :birth_date %>
-  </div>
-  <div class="field">
-    <%= f.label :registration_number, "CEP" %>
-    <%= f.text_field :registration_number %>
+<div class="container list">
+  <div class="d-flex">
+    <%= link_to "<i class='fa-solid fa-right-from-bracket'></i>".html_safe, destroy_user_session_path, data: { turbo_method: :delete }, class: 'back-link' %>
+    <h1>Atenção! Você deve estar logado com a conta correta!</h1>
   </div>
 
-  <%= f.submit 'Checar Perfil' %>
-<% end %>
+  <%= form_with url: profile_checked_path, method: :post, data: { turbo: false }, html: { class: 'form'  } do |f| %>
+    <div class="form-inputs">
+      <%= f.label :first_name, "Nome" %>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="form-inputs">
+      <%= f.label :last_name, "Sobrenome" %>
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="form-inputs">
+      <%= f.label :email, "Email" %>
+      <%= f.text_field :email %>
+    </div>
+    <div class="form-inputs">
+      <div class="birth-date">
+        <%= f.label :birth_date, "Data de Nascimento" %>
+        <%= f.date_field :birth_date %>
+      </div>
+    </div>
+    <div class="form-inputs">
+      <%= f.label :registration_number, "CEP" %>
+      <%= f.text_field :registration_number %>
+    </div>
+
+    <%= f.submit 'Checar Perfil', class: 'btn-form px-5' %>
+  <% end %>
+</div>

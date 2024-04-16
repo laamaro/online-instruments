@@ -42,7 +42,7 @@
           <% if @applied_instrument.evaluated_answers.select { |a| a.answer.question == question }.any? %>
             <%= @applied_instrument.evaluated_answers.select { |a| a.answer.question == question }.first.answer.description %>
           <% else %>
-            <%= simple_form_for [@applied_instrument, @evaluated_answer], html: { class: 'invitation-form' } do |f| %>
+            <%= simple_form_for [@applied_instrument, @evaluated_answer], html: { class: 'form' } do |f| %>
               <%= f.collection_radio_buttons :answer_id, question.answers, :id, :description %>
               <%= button_tag type: 'submit', class: "submit-answer" do %>
                 <i class="fa-solid fa-check" aria-hidden="true"></i>
